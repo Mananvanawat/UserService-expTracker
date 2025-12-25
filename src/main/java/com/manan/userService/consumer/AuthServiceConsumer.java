@@ -12,10 +12,11 @@ public class AuthServiceConsumer {
         this.userRepository = userRepository;
     }
 
-    @KafkaListener(topics = "spring.kafka.topic-json.name", groupId = "")
+    @KafkaListener(topics = "spring.kafka.topic-json.name", groupId = "${spring.kafka.consumer.group-id}")
     public void listen(Object eventData) {
         try {
-
+        int x = 10, y = 10;
+        int z = x+y;
         } catch(Exception ex) {
             System.out.println("error");
         }
