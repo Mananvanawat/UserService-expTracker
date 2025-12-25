@@ -1,0 +1,23 @@
+package com.manan.userService.consumer;
+
+import com.manan.userService.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.annotation.KafkaListener;
+
+public class AuthServiceConsumer {
+    private UserRepository userRepository;
+
+    @Autowired
+    AuthServiceConsumer(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @KafkaListener(topics = "spring.kafka.topic-json.name", groupId = "")
+    public void listen(Object eventData) {
+        try {
+
+        } catch(Exception ex) {
+            System.out.println("error");
+        }
+    }
+}
