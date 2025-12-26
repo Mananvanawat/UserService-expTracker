@@ -1,9 +1,8 @@
-package service;
+package com.manan.userService.service;
 
 import com.manan.userService.entities.UserInfo;
 import com.manan.userService.entities.UserInfoDto;
 import com.manan.userService.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +11,16 @@ import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 @Service
-@RequiredArgsConstructor
 public class UserService
 {
+
+    private UserRepository userRepository;
+
     @Autowired
-    private final UserRepository userRepository;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
 
     public UserInfoDto createOrUpdateUser(UserInfoDto userInfoDto){
         UnaryOperator<UserInfo> updatingUser = user -> {
